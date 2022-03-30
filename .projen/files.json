@@ -5,7 +5,6 @@
     ".github/pull_request_template.md",
     ".github/workflows/build.yml",
     ".github/workflows/pull-request-lint.yml",
-    ".github/workflows/stale.yml",
     ".github/workflows/upgrade.yml",
     ".gitignore",
     ".mergify.yml",
@@ -13,6 +12,7 @@
     ".projen/deps.json",
     ".projen/files.json",
     ".projen/tasks.json",
+    "cdk8s.yaml",
     "LICENSE",
     "tsconfig.dev.json",
     "tsconfig.json"

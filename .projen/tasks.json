@@ -74,6 +74,18 @@
         }
       ]
     },
+    "eject": {
+      "name": "eject",
+      "description": "Remove projen from the project",
+      "env": {
+        "PROJEN_EJECTING": "true"
+      },
+      "steps": [
+        {
+          "spawn": "default"
+        }
+      ]
+    },
     "eslint": {
       "name": "eslint",
       "description": "Runs eslint against the codebase",
@@ -160,6 +172,9 @@
       },
       "steps": [
         {
+          "exec": "yarn upgrade npm-check-updates"
+        },
+        {
           "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='projen'"
         },
         {
@@ -195,6 +210,9 @@
         "CI": "0"
       },
       "steps": [
+        {
+          "exec": "yarn upgrade npm-check-updates"
+        },
         {
           "exec": "npm-check-updates --dep dev --upgrade --target=minor --filter='projen'"
         },

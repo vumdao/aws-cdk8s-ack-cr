@@ -1,7 +1,7 @@
 import { cdk8s } from "projen";
 const project = new cdk8s.Cdk8sTypeScriptApp({
-  cdk8sVersion: "1.0.0-beta.10",
-  defaultReleaseBranch: "main",
+  cdk8sVersion: "1.0.137",
+  defaultReleaseBranch: "master",
   name: "aws-cdk8s-ack-cr",
   projenrcTs: true,
 
@@ -10,4 +10,8 @@ const project = new cdk8s.Cdk8sTypeScriptApp({
   // devDeps: [],             /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */
 });
+
+project.gitignore.addPatterns('.env');
+project.gitignore.addPatterns('.psd');
+
 project.synth();

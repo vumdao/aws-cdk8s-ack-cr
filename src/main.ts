@@ -1,37 +1,23 @@
-import { App, Chart, ChartProps, ApiObject } from 'cdk8s';
-import { Construct } from 'constructs';
-
-export class MyChart extends Chart {
-  constructor(scope: Construct, id: string, props: ChartProps = { }) {
-    super(scope, id, props);
-
-    const label = { app: 'hello-k8s' };
+import { App } from 'cdk8s';
+import { RdsDBInstance } from './rds/db-instance';
+import { RdsSubnetGroup } from './rds/subnet-group';
+import { S3TestBucket } from './s3/s3';
 
 
-    new ApiObject(this, 'deployment', {
-      apiVersion: 'v1',
-      kind: 'Pod',
-      metadata: {
-        namespace: 'frontend',
-        name: 'nginx',
-        labels: label,
-      },
-      spec: {
-        containers: [{
-          name: 'nginx',
-          image: 'nginx:1.14-alpine',
-          resources: {
-            limits: {
-              memory: '20Mi',
-              cpu: 0.2,
-            },
-          },
-        }],
-      },
-    });
-  }
-}
+const rdsApp = new App({
+  outputFileExtension: '.yaml',
+  outdir: 'dist/rds',
+});
+new RdsSubnetGroup(rdsApp, 'rds-subnet-group');
+rdsApp.synth();
 
-const app = new App();
-new MyChart(app, 'hello');
-app.synth();
+
+new RdsDBInstance(rdsApp, 'rds-db-instance');
+rdsApp.synth();
+
+const s3App = new App({
+  outputFileExtension: '.yaml',
+  outdir: 'dist/s3',
+});
+new S3TestBucket(s3App, 's3-test-bucket');
+s3App.synth();
