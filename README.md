@@ -73,7 +73,7 @@
   ```
 
 ## 🚀 **Get your hands dirty with code now** <a name="Get-your-hands-dirty-with-code-now"></a>
-- [RDS](https://github.com/vumdao/aws-cdk8s-ack-cr/src/rds)
+- [RDS](https://github.com/vumdao/aws-cdk8s-ack-cr/tree/master/src/rds)
   ```
   rds
   ├── constants.ts
@@ -84,7 +84,7 @@
   - DBInstance requires subnet group which contains private subnets in EKS VPC (`subnet-group.ts`) and secret keys to hold user credential. The k8s secret is not generated through code here.
   - `db-instance.ts` defines specs of `DbInstance`
 
-- [S3](https://github.com/vumdao/aws-cdk8s-ack-cr/src/s3)
+- [S3](https://github.com/vumdao/aws-cdk8s-ack-cr/tree/master/src/s3)
   ```
   s3
   ├── constants.ts
